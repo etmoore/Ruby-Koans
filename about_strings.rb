@@ -7,6 +7,11 @@ class AboutStrings < Neo::Koan
   end
 
   def test_single_quoted_strings_are_also_strings
+    string = "Don't"
+    assert_equal "Don't", string
+  end
+
+  def test_use_backslash_for_those_hard_cases
     string = 'Goodbye, World'
     assert_equal true, string.is_a?(String)
   end
@@ -17,17 +22,13 @@ class AboutStrings < Neo::Koan
   end
 
   def test_use_double_quotes_to_create_strings_with_single_quotes
-    string = "Don't"
-    assert_equal "Don't", string
-  end
-
-  def test_use_backslash_for_those_hard_cases
     a = "He said, \"Don't\""
     b = 'He said, "Don\'t"'
     assert_equal true, a == b
   end
 
   def test_use_flexible_quoting_to_handle_really_hard_cases
+    b = 'He said, "Don\'t"'
     a = %(flexible quotes can handle both ' and " characters)
     b = %!flexible quotes can handle both ' and " characters!
     c = %{flexible quotes can handle both ' and " characters}
